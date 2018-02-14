@@ -45,6 +45,8 @@ export default new Router()
 
   .get('/oauth/google/code', (req, res, next) => {
 
+    console.log('reached');
+
     let code = req.query.code;
     console.log('code', code);
 
@@ -87,6 +89,7 @@ export default new Router()
           });
       })
       .catch(err => {
+        console.log('reached error');
         console.error(err);
         res.redirect(URL);
       });
