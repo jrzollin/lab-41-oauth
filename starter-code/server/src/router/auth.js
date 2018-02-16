@@ -45,10 +45,8 @@ export default new Router()
 
   .get('/oauth/google/code', (req, res, next) => {
 
-    console.log('reached');
-
     let code = req.query.code;
-    console.log('code', code);
+    console.log('1 code', code);
 
     superagent.post('https://www.googleapis.com/oauth2/v4/token')
       .type('form')
@@ -56,7 +54,7 @@ export default new Router()
         code: code,
         client_id: process.env.GOOGLE_CLIENT_ID,
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
-        redirect_url: `${process.env.API_URL}/oauth/google/code`,
+        redirect_uri: `${process.env.API_URL}/oauth/google/code`,
         grant_type: 'authorization_code',
       })
       .then(res => {
