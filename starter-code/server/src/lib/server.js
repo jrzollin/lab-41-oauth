@@ -40,7 +40,7 @@ export const start = (port) => {
     state.isOn = true;
     mongo.start()
       .then(() => {
-        state.http = app.listen(port || process.env.PORT, () => {
+        state.http = app.listen(process.env.PORT, () => {
           console.log('__SERVER_UP__', process.env.PORT);
           resolve();
         });
